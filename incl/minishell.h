@@ -15,6 +15,8 @@
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
 # define PIPE "|"
+# define D 34
+# define S 39
 
 extern int	minishell_global;
 
