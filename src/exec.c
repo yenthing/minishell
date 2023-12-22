@@ -3,6 +3,7 @@
 void	ft_loop_children(t_pipex *list, int i)
 {
 	ft_check_kid(i, list);
+	sig_handel(2);
 	list->valid_env = ft_env_to_twod_arr(list->data->env);
 	if (!ft_command_check(list, list->tokens, i))
 	{
@@ -52,6 +53,10 @@ int	ft_do_all_to_exec(t_pipex *list, int err, int i)
 			return (0);
 		if (err > 0)
 			return (1);
+		if (list->ac == 1 && is_builtin(list->tokens, i))
+			sig_handel(1);
+		else
+			sig_handel(2);
 		if (i < list->ac - 1)
 			pipe(list->pipes);
 		if (!err)
